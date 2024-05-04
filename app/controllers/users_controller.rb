@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     def create
         @user=User.new(user_resources)
         if @user.save
+            log_in(@user)
             redirect_to '/home'
         else
             render 'new',stauts: :unprocessable_enitiy

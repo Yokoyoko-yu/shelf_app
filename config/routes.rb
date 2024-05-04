@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   get '/home',to:'static_page#home'
   resources :users
   root to:'static_page#sign_in'
+  get '/login',to:'sessions#new'
+  post '/login',to:'sessions#create'
+  delete '/logout',to:'sessions#destroy'
 end

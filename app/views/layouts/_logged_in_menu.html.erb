@@ -1,0 +1,8 @@
+<ul>
+    <li><a href='#'>Home</a></li>
+    <li><a href='#'>View My Shelf</a></li>
+    <li><a href='#'>Check Awards</a></li>
+    <% if logged_in? %>
+    <%= current_user.name %>
+    <%end%>
+</ul>
