@@ -1,0 +1,11 @@
+<h1>Book shelf</h1>
+    <% if @books.any? %>
+    <ul>
+        <% @books.each do |book| %>
+        <li><%= book.title %>       <%= book.author %><%=link_to '削除する',my_book_path(book),data: { "turbo-method": :delete }%></li>
+        <%end %>
+    </ul>
+    <%end%>
+
+<%= link_to '本を追加する',new_my_book_path  %>
+

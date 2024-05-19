@@ -1,0 +1,8 @@
+<h1>add book</h1>
+<%= form_with(model: @book, url: my_books_path) do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<%= f.label :author %>
+<%= f.text_field :author %>
+<%= f.submit "登録する" %>
+<% end %>

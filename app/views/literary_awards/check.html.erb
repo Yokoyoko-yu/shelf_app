@@ -1,0 +1,4 @@
+<%=@award.name%>
+<%@award_books.each do |book|%>
+    <%=render partial:'literary_awards/award_book',locals:{book:book}%>
+<%end%>

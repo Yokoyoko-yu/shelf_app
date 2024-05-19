@@ -1,7 +1,8 @@
 <ul>
     <li><a href='#'>Home</a></li>
-    <li><a href='#'>View My Shelf</a></li>
-    <li><a href='#'>Check Awards</a></li>
+    <li><%= link_to "My Books", my_book_path(@current_user) %></li>
+
+    <li><a href='/awards'>文学賞</a></li>
     <% if logged_in? %>
     <%= current_user.name %>
     <%end%>

@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   get '/login',to:'sessions#new'
   post '/login',to:'sessions#create'
   delete '/logout',to:'sessions#destroy'
+  resources :my_books
+  get 'awards',to:'literary_awards#show'
+  get 'check',to:'literary_awards#check'
 end

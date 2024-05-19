@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_27_101909) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_10_060428) do
+  create_table "award_books", force: :cascade do |t|
+    t.integer "times"
+    t.string "title"
+    t.string "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "literary_award_id", null: false
+    t.index ["literary_award_id"], name: "index_award_books_on_literary_award_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["title", "author"], name: "index_books_on_title_and_author"
+    t.index ["user_id", "created_at"], name: "index_books_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "literary_awards", force: :cascade do |t|
+    t.string "name"
+    t.integer "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -20,4 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_27_101909) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "award_books", "literary_awards"
+  add_foreign_key "books", "users"
 end
