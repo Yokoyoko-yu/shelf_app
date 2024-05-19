@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+    background-color: black;
+    color: white; /* テキストの色を白に設定する場合 */
+  }
+  
+  .award_book li{
+    list-style: none;
+  }
+
+.award,.author,.number{
+  display: flex;
+}
+
+.award li,.author li,.number li{
+  margin-right: 5px;
+}

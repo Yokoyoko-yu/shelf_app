@@ -1,0 +1,3 @@
+<% @awards.each do |award| %>
+    <%= link_to award.name, check_path(id: award.id) %>
+<%end%>
