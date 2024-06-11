@@ -12,4 +12,12 @@ Rails.application.routes.draw do
   resources :my_books
   get 'awards',to:'literary_awards#show'
   get 'check',to:'literary_awards#check'
+  get '/literary_awards/have_book/:id',to:'literary_awards#have_book',as:'have_book'
+  get '/literary_awards/read_book/:id',to:'literary_awards#read_book',as:'read_book'
+  resources :my_books do
+    member do
+      get 'finish'
+    end
+  end
 end
+

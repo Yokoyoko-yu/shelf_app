@@ -30,6 +30,28 @@ CSV.foreach(mishima,headers: true) do |award|
         literary_award_id:2
     )
 end
+noma=Rails.root.join('db/noma.csv')
+
+CSV.foreach(noma,headers: false) do |line|
+    # line=line.split(',')
+    AwardBook.create!(
+        times:line[0],
+        title:line[1],
+        author:line[2],
+        literary_award_id:3
+    )
+end
+# with open('noma.csv','r',encoding='utf-8')as file
+#     for line in file:
+#         line=line.strip()
+#         line=line.split(',')
+#         AwardBook.create!(
+#             times:line[0],
+#             titile:line[1]
+#             author:line[2]
+#             literary_award_id:1
+#         )
+#     end
 # AwardBook.create!({
 #     times:168,      
 #     title:'荒地の家族',

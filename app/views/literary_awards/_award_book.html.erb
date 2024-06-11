@@ -6,11 +6,28 @@
     <ul>
         <div class='award'>
         <li>受賞作品</li>
-        <li><%=book.author%></li>
+        <li><%=book.title%></li>
         </div>
         <div class='author'>
         <li>著者</li>
-        <li><%=book.title%></li>
+        <li><%=book.author%></li>
         </div>
+    </ul>
+    <ul class='book_state'>
+    <%if my_book=MyBook.find_by(title:book.title,user_id:current_user)%>
+        <%if my_book.read==1%>
+            <p>読了している</p>
+        <%else%>
+            <%= link_to "読了",read_book_path(book,current_page_id:params[:id])%>
+        <%end%>
+        <%if my_book.have==1%>
+            <p>所持している</p>
+        <%else%>
+            <%= link_to '所持している',have_book_path(book,current_page_id:params[:id]) %>
+        <%end%>
+    <%else%>
+        <%= link_to "読了",read_book_path(book,current_page_id:params[:id])%>
+        <%= link_to '所持している',have_book_path(book,current_page_id:params[:id]) %>
+    <%end%>
     </ul>
 </div>
