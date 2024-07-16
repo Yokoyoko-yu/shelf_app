@@ -16,18 +16,22 @@
     <ul class='book_state'>
     <%if my_book=MyBook.find_by(title:book.title,user_id:current_user)%>
         <%if my_book.read==1%>
-            <p>読了している</p>
+            <button id="btn" disabled>読了済</button>
         <%else%>
-            <%= link_to "読了",read_book_path(book,current_page_id:params[:id])%>
+            <%=button_to "読了",read_book_path(book,current_page_id:params[:id]),method: :get,id:"btn"%>
+            <%# <button><%#= link_to "読了",read_book_path(book,current_page_id:params[:id])></button> %>
         <%end%>
         <%if my_book.have==1%>
-            <p>所持している</p>
+            <button id="btn" disabled>所持済</button>
         <%else%>
-            <%= link_to '所持している',have_book_path(book,current_page_id:params[:id]) %>
+            <%=button_to "所持",have_book_path(book,current_page_id:params[:id]),method: :get,id:"btn"%>
+            <%# <button class="yet"><%= link_to '所持している',have_book_path(book,current_page_id:params[:id]) ></button> %>
         <%end%>
     <%else%>
-        <%= link_to "読了",read_book_path(book,current_page_id:params[:id])%>
-        <%= link_to '所持している',have_book_path(book,current_page_id:params[:id]) %>
+        <%# <button class="yet">= link_to "読了",read_book_path(book,current_page_id:params[:id])</button> %>
+        <%=button_to "読了",read_book_path(book,current_page_id:params[:id]),method: :get,id:"btn"%>
+        <%# <button class="yet"><%= link_to '所持している',have_book_path(book,current_page_id:params[:id]) ></button> %>
+        <%= button_to "所持",have_book_path(book,current_page_id:params[:id]),method: :get,id:"btn"%>
     <%end%>
     </ul>
 </div>

@@ -92,3 +92,18 @@ header li{
 .book_state a{
   margin-top: 15px;
 }
+
+
+
+button{
+  width: 60px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: white;
+  color: orange;
+}
+
+button:disabled{
+  color: white;
+  background-color: gray;
+}
