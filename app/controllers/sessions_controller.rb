@@ -1,20 +1,39 @@
+require 'jwt'
 class SessionsController < ApplicationController
     def new
     end
 
     def create
+        # Rails.logger(params[:session])
+        # puts params[:session][:email]
+        # Rails.logger.info(params[:session])
         user=User.find_by(email: params[:session][:email].downcase)
         if user&&user.authenticate(params[:session][:password])
             reset_session
             log_in(user)
             redirect_to '/home'
+            Rails.logger.info('ログイン成功です')
         else
-            render new,status: :unprocessable_entity
+            Rails.logger.info('kkk')
+            render :new,status: :unprocessable_entity
         end
     end
 
     def destroy
-        session.delete(:user_id)
-        redirect_to root_path
+        # session.delete(:user_id)
+        log_out
+        # redirect_to root_path
+    end
+
+    def user
+        Rails.logger.info "Cookies: #{cookies.inspect}"
+        if logged_in?
+            render json:{user:current_user}
+            puts '成功'
+        else
+            Rails.logger.info('失敗')
+            # render json: { error: "Not logged in" }, status: :unauthorized
+            render json:{user_name:"null"}
+        end
     end
 end

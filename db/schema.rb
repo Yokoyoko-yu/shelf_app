@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_08_130108) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_15_071459) do
   create_table "award_books", force: :cascade do |t|
     t.integer "times"
     t.string "title"
@@ -37,6 +37,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_08_130108) do
     t.integer "user_id", null: false
     t.integer "read"
     t.integer "have", default: 0
+    t.string "isbn"
+    t.string "image"
     t.index ["title", "author"], name: "index_my_books_on_title_and_author"
     t.index ["user_id", "created_at"], name: "index_my_books_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_my_books_on_user_id"

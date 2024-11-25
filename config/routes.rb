@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'check',to:'literary_awards#check'
   get '/literary_awards/have_book/:id',to:'literary_awards#have_book',as:'have_book'
   get '/literary_awards/read_book/:id',to:'literary_awards#read_book',as:'read_book'
+  get '/current_user',to:'sessions#user',defaults: { format: :json }
   resources :my_books do
     member do
       get 'finish'

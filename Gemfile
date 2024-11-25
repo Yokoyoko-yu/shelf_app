@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.3"
-
+ruby "3.3.5"
+gem 'jwt'
 gem "rails",           "7.0.4.3"
 gem "bcrypt",          "3.1.18"
 gem "bootstrap-sass",  "3.4.1"
@@ -15,7 +15,7 @@ gem "jbuilder",        "2.11.5"
 gem "puma",            "5.6.8"
 gem "bootsnap",        "1.16.0", require: false
 gem "sqlite3",         "1.6.1"
-
+gem 'rack-cors' 
 group :development, :test do
   gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
 end
@@ -39,4 +39,4 @@ group :test do
 end
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
